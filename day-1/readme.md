@@ -1,4 +1,4 @@
-[observability-complete-guide.md](https://github.com/user-attachments/files/24077550/observability-complete-guide.md)
+
 # Observability in Kubernetes - Complete Guide
 
 A comprehensive, beginner-friendly guide to understand observability, monitoring, logging, and tracing in Kubernetes and distributed systems.
