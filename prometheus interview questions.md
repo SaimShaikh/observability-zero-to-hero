@@ -196,3 +196,71 @@ This helps Prometheus scale better, improves performance, and avoids a single po
 
 ---
 
+## Q18.  What are Counters in Prometheus?
+
+In Prometheus, a Counter is a metric type that represents a cumulative value which only increases over time. It is mainly used to count events such as requests, errors, or job executions. Counters reset only when the application restarts and are typically used with rate or increase functions to calculate values like requests per second.
+
+What Counters are used for (Real Meaning)
+
+- Counters answer questions like:
+
+- How many requests were served?
+
+- How many errors occurred?
+
+- How many jobs were executed?
+
+- How many times a pod restarted?
+
+---
+
+## Q19. What is the default data retention period in Prometheus?
+
+The default data retention period is 15 days in Prometheus. Data would be automatically deleted after the data storage default retention duration has passed.
+
+---
+
+## Q20. What is Thanos Prometheus?
+
+Thanos is a set of components that extends Prometheus to provide high availability, long-term storage, and a global query view. It works alongside Prometheus by uploading metrics to object storage and allowing deduplicated queries across multiple Prometheus instances, making Prometheus suitable for large-scale and multi-cluster environments.
+
+Scenario : Multi-Cluster Kubernetes Monitoring (Most Common)
+Situation
+
+You have:
+
+5 Kubernetes clusters
+
+Different environments: dev, staging, prod
+
+Each cluster runs its own Prometheus
+
+Problem without Thanos:
+
+Each Prometheus has its own data
+
+Grafana dashboards must be duplicated
+
+No single place to see overall system health
+
+How Thanos helps
+
+Each cluster Prometheus runs with Thanos Sidecar
+
+Metrics are uploaded to object storage
+
+One Thanos Query gives a global view
+
+Grafana connects to Thanos Query
+
+---
+
+## Q21 What protocol does Prometheus use?
+
+Prometheus is primarily based on a pull model, in which the prometheus server has a list of targets it should scrape metrics from. The pull protocol is HTTP based and simply put, the target returns a list of 
+
+
+---
+
+## Q22 How do you integrate with Prometheus?
+
