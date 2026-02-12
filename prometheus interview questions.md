@@ -259,8 +259,35 @@ Grafana connects to Thanos Query
 
 Prometheus is primarily based on a pull model, in which the prometheus server has a list of targets it should scrape metrics from. The pull protocol is HTTP based and simply put, the target returns a list of 
 
+---
+
+## Q22. What are labels and why are they important?
+
+In Prometheus, labels are key–value pairs attached to a metric that give extra context about that metric.
 
 ---
 
+## Q23. Production latency increased suddenly. How do you troubleshoot using Prometheus & Grafana?
+
+Check latency dashboards
+2. Identify affected service
+3. Drill down by pod/instance
+4. Correlate with CPU/memory
+5. Check error rates
+6. Validate recent deployments
+
+
+---
+
+
+
 ## Q22 How do you integrate with Prometheus?
 
+To integrate with Prometheus, the system exposes metrics through a /metrics endpoint, either using exporters or by instrumenting the application. Prometheus is then configured to scrape this endpoint and collect metrics. These metrics can be visualized using Grafana and used for alerting.
+
+
+---
+
+# Grafana Interview Questions 
+
+## Q1.
