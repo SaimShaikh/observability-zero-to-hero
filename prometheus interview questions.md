@@ -288,6 +288,177 @@ To integrate with Prometheus, the system exposes metrics through a /metrics endp
 
 ---
 
+## Q23. What are the different metric types in Prometheus?
+
+Prometheus has four metric types: Counter, which only increases and is used for counting events; Gauge, which can go up and down and shows current values like CPU or memory; Histogram, which measures values like request latency using buckets; and Summary, which also measures latency but provides percentiles such as p95 or p99.
+
+Which one to use? (Real rule)
+
+- Events happened? → Counter
+
+- Current value? → Gauge
+
+- Latency & buckets? → Histogram
+
+- Exact percentiles? → Summary
+
+---
+
+## Q24.  Difference between rate() and irate()?
+
+• rate() → average over time (stable,preferred)
+• irate() → instant rate (more volatile)
+
+---
+
+## Q25. How does Prometheus store data?
+
+Prometheus stores metrics as time-series data on local disk using its built-in time-series database. Each metric is stored with labels, timestamp, and value. Data is first written to a write-ahead log and later compacted into blocks. Prometheus keeps data for a configured retention period and is optimized for fast reads and writes, but it is not designed for long-term storage.
+
+---
+ 
+## Q26. Prometheus performance is degrading. What could be the reasons?
+
+Prometheus performance usually degrades due to high cardinality labels creating too many time series, scraping too many targets too frequently, keeping data for a very long retention period on local storage, and running expensive PromQL queries that scan large amounts of data. These factors increase memory, CPU, and disk usage and slow down Prometheus.
+
+---
+
+## Q27. How do you monitor application latency using Prometheus?
+
+To monitor application latency using Prometheus, I expose request duration metrics from the application using a Histogram or Summary. Prometheus collects these metrics over time, and I use histogram_quantile() to calculate latency percentiles like p95 and p99. These values are visualized in Grafana and used to create alerts for high latency.
+
+---
+
 # Grafana Interview Questions 
 
-## Q1.
+## Q1. What is Grafana?
+
+Grafana is an open-source data visualization tool used to display metrics and logs in the form of dashboards and graphs. It connects to data sources like Prometheus and helps teams monitor system health and performance in an easy-to-understand way.
+
+---
+
+## Q2. How does Grafana integrate with Prometheus?
+
+Grafana integrates with Prometheus by adding it as a data source. Grafana sends PromQL queries to Prometheus using its API, Prometheus returns the metrics data, and Grafana visualizes that data in dashboards and graphs.
+
+
+---
+
+## Q3. What are dashboards and panels in Grafana?
+
+• Dashboard - Collection of panels
+• Panel - Single visualization(graph,table,gauge)
+
+---
+
+## Q4. What types of visualizations does Grafana support?
+
+• Time-series graphs
+• Heatmaps
+• Gauges
+• Tables
+• Bar charts
+
+
+---
+
+## Q5. What are Grafana variables?
+
+Grafana variables are dynamic values used in dashboards to make them interactive and reusable. They allow users to filter and change data, such as selecting different services, nodes, or environments, without modifying the queries. Variables are commonly populated using Prometheus label values and appear as dropdowns in Grafana dashboards.
+
+
+---
+
+## Q6. A Grafana dashboard is slow. How do you optimize it?
+
+Reduce query complexity
+• Increase time range step
+• Limit panels per dashboard
+• Use recording rules
+
+
+---
+
+## Q7. How do you create alerts in Grafana?
+
+To create alerts in Grafana, I first create a panel with the required metric from Prometheus. Then I add an alert rule, define the threshold and duration, set the evaluation interval, and configure notification channels like email or Slack. Grafana evaluates the metric regularly and sends alerts when the condition is met.
+
+---
+
+## Q8. Multiple teams use the same Grafana instance. How do you manage access?
+
+When multiple teams use the same Grafana instance, I manage access using organizations or teams with role-based permissions. Dashboards are grouped into folders, and access is granted at the folder level so teams only see their own dashboards. Roles like Viewer, Editor, and Admin control what users can do, and for larger setups I use SSO or LDAP for centralized access management.
+
+---
+
+## Q9. How do you visualize error rates in Grafana?
+
+To visualize error rates in Grafana, I use PromQL to calculate the error percentage from Prometheus counters. I then plot this value as a time-series graph to observe trends and spikes. Finally, I add threshold-based alerts so the team is notified when the error rate crosses an acceptable limit.
+
+---
+
+## Q10. Explain the concept of Grafana plugins.
+
+Grafana plugins are extensions that add extra functionality to Grafana. They are used to connect new data sources, create new types of visualizations, or provide complete monitoring applications. Plugins help Grafana stay flexible and customizable without modifying the core system.
+
+---
+
+## Q11. How do you create a dashboard in Grafana?
+
+To create a dashboard in Grafana, I create a new dashboard, add panels, select Prometheus as the data source, write queries to fetch metrics, choose suitable visualizations like time-series graphs, customize the panels, and then save the dashboard. Variables can be added to make the dashboard reusable.
+
+---
+
+## Q12. Explain the difference between Grafana annotations and alerts.
+
+Grafana annotations are used to mark events like deployments or restarts on dashboards to give context to metrics, while Grafana alerts actively monitor metrics and send notifications when thresholds are crossed. Annotations help with analysis, whereas alerts are used for real-time incident response.
+
+--- 
+
+## Q13. What is the purpose of Grafana Loki, and how does it differ from other log aggregation solutions?
+
+• Grafana Loki is a log
+aggregation system designed
+for cloud-native
+environments.
+• It is optimized for horizontal
+scalability, cost-effectiveness,
+and easy integration with
+other observability tools.
+• Unlike traditional log
+aggregation solutions, Loki
+stores logs in a highly
+compressed, horizonta
+scalable manner, maki
+suitable for high-volul
+distributed architectures.
+
+---
+
+## Q14. How do you visualize metrics and logs together in Grafana?
+
+In Grafana, metrics and logs are visualized together by using Prometheus for metrics and Loki for logs with common labels like service and namespace. Grafana allows correlating metric spikes with logs by jumping from a graph to the related logs for the same time range, making debugging faster and easier.
+
+---
+## Q15. How do you scale Grafana deployments for high availability and performance?
+
+• Grafana deployments can be
+scaled for high availability
+and performance by
+deploying multiple Grafana
+instances behind a load
+balancer, configuring shared
+storage for session
+persistence, and using
+clustering or sharding
+techniques to distribute
+workloads across multiple
+nodes.
+• Additionally, Grafana
+deployments can be
+optimized for performance by
+tuning database settings,
+caching, and query
+optimizations.
+de
+
