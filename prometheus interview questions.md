@@ -46,7 +46,7 @@ Prometheus is a monitoring system that collects, stores, and evaluates metrics a
 1 Prometheus Server
 The Prometheus server is the brain of the metric-based monitoring system. The main job of the
 server is to collect the metrics from various targets using pull model.
-Target is nothing but a server, pod, endpoints etc which we will look in to detail in the next topic.
+Target is nothing but a server, pod, endpoints etc 
 The general term for collecting metrics from the targets using Prometheus is called scraping.
 
 2 TSDB
