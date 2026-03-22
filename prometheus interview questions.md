@@ -153,7 +153,7 @@ The Prometheus API is used to query and retrieve metrics, alert states, and targ
 
 ---
 
-## Q14. Q 14 What are Prometheus’s limitations?
+## Q14. What are Prometheus’s limitations?
 Prometheus has several limitations, including lack of built-in authentication, limited long-term
 storage, and no native high availability.
 
