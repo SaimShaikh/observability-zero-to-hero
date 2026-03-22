@@ -142,7 +142,7 @@ node_exporter is a Prometheus exporter used to collect system-level metrics from
 
 ---
 
-## Q12. Q 12 Can Prometheus monitor Windows servers?
+## Q12. Can Prometheus monitor Windows servers?
 
 Yes, with windows_exporter, Prometheus can collect metrics from Windows servers.
 
