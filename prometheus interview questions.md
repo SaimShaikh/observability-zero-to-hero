@@ -130,7 +130,7 @@ level security such as firewalls, security groups, and Kubernetes network polici
 
 ---
 
-## Q10. Q 10 What is the default port for Prometheus?
+## Q10. What is the default port for Prometheus?
 
 9090
 
